@@ -1,0 +1,94 @@
+name: Automation Master Workflow
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow from another workflow
+  workflow_call:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  reusable_workflow_job:
+    name: CI using 
+    runs-on: windows-latest
+
+    outputs:
+      artifact-id: ${{ steps.upload-step-release.outputs.artifact-id }}
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Initialize
+        run: echo "todo"
+
+      - name: Detect Solution
+        run: echo "todo"
+
+      - name: Validate Solution
+        run: echo "todo"
+
+      - name: Prepare Solution
+        run: echo "todo"
+
+      - name: Validate Possible Dependency NuGets
+        run: echo "todo"
+
+      - name: Sync DIS version
+        run: echo "todo"  
+
+      - name: Building
+        uses: microsoft/setup-msbuild@v1
+        run: |
+          nuget restore
+          msbuild.exe AutomationScript.sln /clp:ErrorsOnly /verbosity:minimal /fileLogger /flp:errorsonly /nologo /t:Clean,Restore,Build /p:Configuration=Release /p:ReferencePath=\"%workspace%\\Dlls}
+
+      - name: Scan Test Projects
+        run: echo "todo" 
+
+      - name: Unit Tests
+        uses: darenm/Setup-VSTest@v1
+        run: vstest.console.exe **\bin\**\*.UnitTests.dll,**\bin\**\*.Tests.dll /logger:trx 
+
+      - name: Integration Tests
+        run: echo "todo" 
+
+      - name: SonarQube Analysis
+        run: echo "todo" 
+
+      - name: Quality Gate
+        run: echo "todo" 
+
+      - name: (Development) Upload dmapp Package
+        if: $GITHUB_REF_TYPE == 'branch'
+        id: upload-step-development
+        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@release
+        with:
+          # Stage upload
+          stage: Upload
+          # The API-key generated in the DCP Admin app as authentication for a certain DataMiner System. E.g. g597e77412e34297b827c2570a8fa2bc
+          api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
+          # The path to the .sln file of the solution. Atm only DataMiner Automation Script solutions are supported. E.g ./Example/Script.sln.
+          solution-path: ./AutomationScript.sln
+          # The chosen name of the package. E.g. MyPackageName.
+          package-name: ${{ GITHUB_REPOSITORY }} ${{ $GITHUB_REF_NAME }}_B${{ $GITHUB_RUN_NUMBER }}
+          # The version number for the package (format A.B.C.D). E.g. 1.0.1.1
+          build-number: ${{ $GITHUB_RUN_NUMBER }}
+
+      - name: (Release) Upload dmapp Package
+        if: $GITHUB_REF_TYPE == 'tag'
+        id: upload-step-release
+        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@release
+        with:
+          # Stage upload
+          stage: Upload
+          # The API-key generated in the DCP Admin app as authentication for a certain DataMiner System. E.g. g597e77412e34297b827c2570a8fa2bc
+          api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
+          # The path to the .sln file of the solution. Atm only DataMiner Automation Script solutions are supported. E.g ./Example/Script.sln.
+          solution-path: ./AutomationScript.sln
+          # The chosen name of the package. E.g. MyPackageName.
+          package-name: ${{ GITHUB_REPOSITORY }} ${{ $GITHUB_REF_NAME }}
+          # The version number for the package (format A.B.C.D). E.g. 1.0.1.1
+          version: ${{ $GITHUB_REF_NAME }}
+
+      - name: Post Actions
+        run: echo "todo" 
