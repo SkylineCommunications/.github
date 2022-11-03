@@ -4,6 +4,8 @@ name: Automation Master Workflow
 on:
   # Allows you to run this workflow from another workflow
   workflow_call:
+    outputs:
+      artifact-id: ${{ jobs.reusable_workflow_job.outputs.artifact-id }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,14 +42,14 @@ jobs:
         uses: microsoft/setup-msbuild@v1
         run: |
           nuget restore
-          msbuild.exe AutomationScript.sln /clp:ErrorsOnly /verbosity:minimal /fileLogger /flp:errorsonly /nologo /t:Clean,Restore,Build /p:Configuration=Release /p:ReferencePath=\"%workspace%\\Dlls}
+          msbuild.exe AutomationScript.sln /clp:ErrorsOnly /verbosity:minimal /fileLogger /flp:errorsonly /nologo /t:Clean,Restore,Build /p:Configuration=Release /p:ReferencePath=\"${{ GITHUB_WORKSPACE }}\\Dlls}
 
       - name: Scan Test Projects
         run: echo "todo" 
 
       - name: Unit Tests
         uses: darenm/Setup-VSTest@v1
-        run: vstest.console.exe **\bin\**\*.UnitTests.dll,**\bin\**\*.Tests.dll /logger:trx 
+        run: vstest.console.exe **\bin\**\*.UnitTests.dll,**\bin\**\*.Tests.dll,**\bin\**\*Tests.dll /logger:trx 
 
       - name: Integration Tests
         run: echo "todo" 
@@ -61,7 +63,8 @@ jobs:
       - name: (Development) Upload dmapp Package
         if: $GITHUB_REF_TYPE == 'branch'
         id: upload-step-development
-        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@release
+        # uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@release
+        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action/Actions/Dockerfile@UseReusableModuleNuGets
         with:
           # Stage upload
           stage: Upload
@@ -77,7 +80,7 @@ jobs:
       - name: (Release) Upload dmapp Package
         if: $GITHUB_REF_TYPE == 'tag'
         id: upload-step-release
-        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@release
+        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action/Actions/Dockerfile@UseReusableModuleNuGets
         with:
           # Stage upload
           stage: Upload
