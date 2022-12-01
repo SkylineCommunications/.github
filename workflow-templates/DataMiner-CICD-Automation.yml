@@ -22,7 +22,12 @@ jobs:
       runNumber: ${{ github.run_number }}
       referenceType: ${{ github.ref_type }}
       repository: ${{ github.repository }}
-    secrets: inherit
+      owner: ${{ github.repository_owner }}
+      sonarCloudProjectName: "todo"
+      # The API-key generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System. E.g. g597e77412e34297b827c2570a8fa2bc
+      secrets:
+        api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
+        sonarCloudToken: ${{ secrets.SONAR_TOKEN }}
     
   # # Optional 0 or More CD Jobs as needed
   # CD:
@@ -40,7 +45,7 @@ jobs:
   #       with:
   #         # Stage deploy
   #         stage: Deploy
-  #         # The API-key generated in the DCP Admin app as authentication for a certain DataMiner System. E.g. g597e77412e34297b827c2570a8fa2bc
+  #         # The API-key generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System. E.g. g597e77412e34297b827c2570a8fa2bc
   #         api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
   #         # Id of the uploaded artifact
   #         artifact-id: ${{ needs.CI.outputs.artifact-id }}
