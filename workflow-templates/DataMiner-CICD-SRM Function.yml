@@ -16,7 +16,7 @@ on:
 jobs:
 
   CI:
-    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Automation Master Workflow.yml@main
+    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/SRM Function Master Workflow.yml@main
     with:
       referenceName: ${{ github.ref_name }}
       runNumber: ${{ github.run_number }}
@@ -45,7 +45,7 @@ jobs:
   #       with:
   #         # Stage deploy
   #         stage: Deploy
-  #         # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
+  #         # The API-key generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
   #         api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
   #         # Id of the uploaded artifact
   #         artifact-id: ${{ needs.CI.outputs.artifact-id }}
