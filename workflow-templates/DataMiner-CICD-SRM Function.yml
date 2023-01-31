@@ -1,4 +1,4 @@
-name: DataMiner CICD Automation
+name: DataMiner CICD SRM Function
 
 # Controls when the workflow will run
 on:
