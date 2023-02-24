@@ -18,7 +18,7 @@ on:
 jobs:
 
   CICD:
-    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/NuGet Solution Master Workflow.yml@@SolutionMasterDev
+    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/NuGet Solution Master Workflow.yml@SolutionMasterDev
     with:
       referenceName: ${{ github.ref_name }}
       runNumber: ${{ github.run_number }}
