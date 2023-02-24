@@ -1,4 +1,4 @@
 {
     "name": "DataMiner CICD NuGet Solution",
-    "description": "IN DEVELOPMENT - DO NOT USE - Starter Workflow for CICD with a VS Solution for NuGet Creation. Note: only works for a single project currently."
+    "description": "Starter Workflow for CICD with a VS Solution for NuGet Creation. This has a hardcoded step that validates specifically for Skyline Company NuGets."
 }
