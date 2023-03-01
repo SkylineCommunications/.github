@@ -6,7 +6,6 @@ The foundation of DataMiner is its powerful and versatile data acquisition and c
 
 A unique catalog of 7000+ connectors already exist. In addition, you can leverage DataMiner Development Packages to build you own connectors (also known as "protocols" or "drivers").
 
-> [!TIP]
 > See also: [About DataMiner](https://aka.dataminer.services/about-dataminer)
 
 ### About Skyline Communications
