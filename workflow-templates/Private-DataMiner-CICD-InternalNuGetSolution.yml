@@ -17,7 +17,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-# Note: Tagging will push the nupackage to the GitHub NuGet registryg using the provided NUGETAPIKEY (Personal Access Token). You can tag both a prerelease version (a.b.c-xxxx) or a stable release (a.b.c).
+# Note: Tagging will push the nupackage to the GitHub NuGet registryg using the provided NUGETAPIKEY_GITHUB (Personal Access Token). You can tag both a prerelease version (a.b.c-xxxx) or a stable release (a.b.c).
   CICD:
     uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Internal NuGet Solution Master Workflow.yml@main
     with:
@@ -29,4 +29,4 @@ jobs:
       sonarCloudProjectName: TODO: Go to 'https://sonarcloud.io/projects/create' and create a project. Then enter the id of the project as mentioned in the sonarcloud project url here.
     secrets:
       sonarCloudToken: ${{ secrets.SONAR_TOKEN }}
-      nugetApiKey: ${{ secrets.GITHUB_NUGETAPIKEY }}
+      nugetApiKey: ${{ secrets.NUGETAPIKEY_GITHUB }}
