@@ -9,3 +9,5 @@ The foundation of DataMiner is its powerful and versatile data acquisition and c
 ### About Skyline Communications
 
 At Skyline Communications, we deal in world-class solutions that are deployed by leading companies around the globe. Check out [our proven track record](https://aka.dataminer.services/about-skyline) and see how we make our customers' lives easier by empowering them to take their operations to the next level.
+
+We are also on GitLab! You can find us at [Skyline Communications on GitLab](https://gitlab.com/skylinecommunications).
