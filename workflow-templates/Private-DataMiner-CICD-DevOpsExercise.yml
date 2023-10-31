@@ -16,7 +16,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Zip Release
-        uses: TheDoctor0/zip-release@0.7.1
+        uses: TheDoctor0/zip-release@0.7.6
         with:
           filename: "${{ github.event.pull_request.user.login }}_FromPR.zip"
           exclusions: '*.git*'
