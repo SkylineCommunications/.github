@@ -22,7 +22,7 @@ jobs:
     name: CD
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Install DataMiner Deploy
         run: dotnet tool install -g Skyline.DataMiner.CICD.Tools.Packager
