@@ -21,12 +21,7 @@ jobs:
   CICD:
     uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Internal NuGet Solution Master Workflow.yml@main
     with:
-      referenceName: ${{ github.ref_name }}
-      runNumber: ${{ github.run_number }}
-      referenceType: ${{ github.ref_type }}
-      repository: ${{ github.repository }}
-      owner: ${{ github.repository_owner }}
       sonarCloudProjectName: #TODO: Go to 'https://sonarcloud.io/projects/create' and create a project. Then enter the id of the project as mentioned in the sonarcloud project url here.
     secrets:
-      sonarCloudToken: ${{ secrets.SONAR_TOKEN }}
+      # sonarCloudToken: ${{ secrets.SONAR_TOKEN }} # Not needed anymore for SkylineCommunications organization
       nugetApiKey: ${{ secrets.NUGETAPIKEY_GITHUB }}
