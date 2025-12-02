@@ -23,7 +23,7 @@ jobs:
     name: CD
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v5
       
       - name: Install DataMiner Deploy
         run: 
