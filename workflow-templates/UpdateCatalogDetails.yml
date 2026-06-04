@@ -1,4 +1,4 @@
-name: Update Catalog Details for AppPackages
+name: Update Catalog Details
 
 # Controls when the workflow will run
 on:
