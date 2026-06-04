@@ -1,4 +1,4 @@
-name: DataMiner CICD Automation
+name: DataMiner Connector
 
 # Controls when the workflow will run
 on:
@@ -17,7 +17,7 @@ on:
 jobs:
 
   CI:
-    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Automation Master Workflow.yml@main
+    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Connector Master Workflow.yml@main
     with:
       sonarCloudProjectName: #TODO: Go to 'https://sonarcloud.io/projects/create' and create a project. Then enter the id of the project as mentioned in the sonarcloud project url here.
     # secrets:
@@ -43,9 +43,8 @@ jobs:
       # oidc-client-id: ${{ secrets.OIDC_CLIENT_ID }}
       # oidc-tenant-id: ${{ secrets.OIDC_TENANT_ID }}
       # oidc-subscription-id: ${{ secrets.OIDC_SUBSCRIPTION_ID }}
-
     
-  # # Optional 0 or More CD Jobs as needed
+  # Optional 0 or More CD Jobs as needed
   # CD:
   #   if: github.ref_type == 'tag'
   #   environment: production
