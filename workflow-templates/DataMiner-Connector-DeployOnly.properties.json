@@ -1,0 +1,8 @@
+{
+    "name": "DataMiner Connector Deploy Only",
+    "description": "Workflow for deply only with a Skyline formatted Connector (aka protocol, driver) repository. Warning: avoid using this for stable releases. Use CI/CD for that.",
+    "filePatterns": [
+        "protocol.xml",
+        "QActions"
+    ]
+}
