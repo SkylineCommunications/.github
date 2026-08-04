@@ -18,8 +18,9 @@ jobs:
 
   CI:
     uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Connector Master Workflow.yml@main
-    with:
-      sonarCloudProjectName: #TODO: Go to 'https://sonarcloud.io/projects/create' and create a project. Then enter the id of the project as mentioned in the sonarcloud project url here.
+    # with:
+      # SonarCloud is optional.
+      # sonarCloudProjectName: #TODO: Go to 'https://sonarcloud.io/projects/create' and create a project. Then enter the id of the project as mentioned in the sonarcloud project url here.
     # secrets:
       # These secrets are only required when:
       # - The repository is not part of the SkylineCommunications GitHub Organization.
@@ -53,7 +54,7 @@ jobs:
   #   needs: CI
 
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v7
         
   #     - name: Install .NET Tools
   #       run: dotnet tool install -g Skyline.DataMiner.CICD.Tools.DataMinerDeploy
